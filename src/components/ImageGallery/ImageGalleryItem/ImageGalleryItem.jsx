@@ -8,7 +8,7 @@ const ImageGalleryItem = ({ pictures, onClick }) => {
     const { webformatURL, largeImageURL } = picture;
     return (
       <li
-        onClick={() => onClick({ largeImageURL })}
+        onClick={() => onClick(largeImageURL)}
         className={s.galleryItem}
         key={id}
       >

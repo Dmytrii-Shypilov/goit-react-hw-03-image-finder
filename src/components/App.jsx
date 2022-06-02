@@ -15,6 +15,7 @@ class App extends Component {
     loading: false,
     modalVisible: false,
     modalBody: null,
+    error: null,
   };
 
   async componentDidUpdate(prevProps, prevState) {
@@ -31,8 +32,10 @@ class App extends Component {
           loading: false,
         }));
       } catch (error) {
-        this.setState({ loading: false });
-        console.error(error);
+        this.setState({
+          loading: false,
+          error: error.message,
+        });
       }
     }
   }
@@ -45,7 +48,7 @@ class App extends Component {
     });
   };
 
-  openModal = (modalBody) => {
+  openModal = modalBody => {
     this.setState({
       modalVisible: true,
       modalBody,
@@ -70,7 +73,9 @@ class App extends Component {
     return (
       <>
         <SearchBar onSubmit={getQueryOnSubmit} />
-        {Boolean(pictures.length) &&<ImageGallery pictures={pictures} onClick={openModal}/>}
+        {Boolean(pictures.length) && (
+          <ImageGallery pictures={pictures} onClick={openModal} />
+        )}
         {loading && <Loader />}
         {Boolean(pictures.length) && <Button onClick={loadMore} />}
         {modalVisible && (

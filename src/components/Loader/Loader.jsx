@@ -14,8 +14,8 @@ class Loader extends Component {
           text={'Loading...'}
           bgColor={'#F0A500'}
           center={false}
-          width={'150px'}
-          height={'150px'}
+          width={'100px'}
+          height={'100px'}
         />
       </div>
     );

@@ -2,9 +2,6 @@ import { Component } from 'react';
 import s from './loader.module.css'
 
 import {
-  BarLoader,
-  DoubleBubble,
-  SlidingPebbles,
   DoubleOrbit,
 } from 'react-spinner-animated';
 import 'react-spinner-animated/dist/index.css';

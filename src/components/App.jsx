@@ -27,10 +27,12 @@ class App extends Component {
       try {
         const response = await API.fetch(query, page);
         const data = response.data.hits;
+
         this.setState(prevState => ({
           pictures: [...prevState.pictures, ...data],
           loading: false,
         }));
+        
       } catch (error) {
         this.setState({
           loading: false,
@@ -55,15 +57,18 @@ class App extends Component {
     });
   };
 
-  closeModal = (e, key) => {
-    if (e.target === e.currentTarget || key === 'Escape') {
+  closeModal = () => {
       this.setState({
         modalVisible: false,
       });
-    }
+    
   };
   getQueryOnSubmit = query => {
-    this.setState({ query });
+    this.setState({ 
+      query,
+      page: 1,
+      pictures: []
+     });
   };
 
   render() {
